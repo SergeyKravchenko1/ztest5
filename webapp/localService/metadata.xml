@@ -1,0 +1,351 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_z_pm_196h_sd" xml:lang="uk" sap:schema-version="1">
+            <EntityType Name="Z_C_pm_196h_orders_dataType" sap:label="Projection view for orders data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="SetAH_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetNA_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetUN_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Номер замовлення ТОРО" sap:quickinfo="Номер замовлення"/>
+                <Property Name="auart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Вид замовлення ТОРО" sap:quickinfo="Тип замовлення"/>
+                <Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Завод"/>
+                <Property Name="ktext" Type="Edm.String" MaxLength="40" sap:label="Короткий текст заголовку замовлення" sap:quickinfo="Опис"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Номер ОО" sap:quickinfo="Номер обладнання"/>
+                <Property Name="eqktx" Type="Edm.String" MaxLength="40" sap:label="Назва ОО" sap:quickinfo="Опис технічного об'єкта" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FuncLocation" Type="Edm.String" MaxLength="30" sap:label="Код ФР" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FuncLocationDescr" Type="Edm.String" MaxLength="40" sap:label="Назва ФР" sap:quickinfo="Опис функціонального розташування" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="wrt01" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="currency" sap:label="Планові витрати" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="currency" Type="Edm.String" MaxLength="5" sap:label="Валюта" sap:creatable="false" sap:updatable="false" sap:semantics="currency-code"/>
+                <Property Name="StatSys" Type="Edm.String" MaxLength="60" sap:label="Системний статус" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:value-list="fixed-values"/>
+                <Property Name="StatUsr" Type="Edm.String" MaxLength="60" sap:label="Користувацький статус" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:value-list="fixed-values"/>
+                <NavigationProperty Name="to_SystemStatus" Relationship="cds_z_pm_196h_sd.assoc_77E6888121B7523C112AB8EA8CD268DF" FromRole="FromRole_assoc_77E6888121B7523C112AB8EA8CD268DF" ToRole="ToRole_assoc_77E6888121B7523C112AB8EA8CD268DF"/>
+                <NavigationProperty Name="to_UserStatus" Relationship="cds_z_pm_196h_sd.assoc_AFD8E184E1BDF487EBDF9D8113734B1B" FromRole="FromRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B" ToRole="ToRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_afihType" sap:label="Maintenance order header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Обладнання" sap:quickinfo="Номер обладнання"/>
+                <Property Name="iloan" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Розташ./контирування" sap:quickinfo="Розташування і контирування для технічного об'єкта"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_afih_related_dataType" sap:label="AFIH table related data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Обладнання" sap:quickinfo="Номер обладнання"/>
+                <Property Name="FuncLocation" Type="Edm.String" MaxLength="30"/>
+                <Property Name="FuncLocationDescr" Type="Edm.String" MaxLength="40" sap:label="Опис функц.розташ." sap:quickinfo="Опис функціонального розташування"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_aufkType" sap:label="Basic order data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="auart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Тип замовлення"/>
+                <Property Name="autyp" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Категорія замовлення"/>
+                <Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Завод"/>
+                <Property Name="ktext" Type="Edm.String" MaxLength="40" sap:label="Опис"/>
+                <Property Name="objnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Номер об'єкта"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_eqktType" sap:label="Short names of equipment units" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="equnr"/>
+                </Key>
+                <Property Name="equnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Обладнання" sap:quickinfo="Номер обладнання"/>
+                <Property Name="eqktx" Type="Edm.String" MaxLength="40" sap:label="Опис об'єкта" sap:quickinfo="Опис технічного об'єкта"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_orders_data_uType" sap:label="Composite orders' data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="SetStatusAH_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetStatusNA_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SetStatusUN_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="auart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Тип замовлення"/>
+                <Property Name="autyp" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Категорія замовлення"/>
+                <Property Name="werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Завод"/>
+                <Property Name="ktext" Type="Edm.String" MaxLength="40" sap:label="Опис"/>
+                <Property Name="objnr" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Номер об'єкта"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Обладнання" sap:quickinfo="Номер обладнання"/>
+                <NavigationProperty Name="to_SystemStatus" Relationship="cds_z_pm_196h_sd.assoc_17B27CBE1889B13836543A71C6A15D7B" FromRole="FromRole_assoc_17B27CBE1889B13836543A71C6A15D7B" ToRole="ToRole_assoc_17B27CBE1889B13836543A71C6A15D7B"/>
+                <NavigationProperty Name="to_UserStatus" Relationship="cds_z_pm_196h_sd.assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7" FromRole="FromRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7" ToRole="ToRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7"/>
+                <NavigationProperty Name="to_Z_I_pm_196h_afih_related_data" Relationship="cds_z_pm_196h_sd.assoc_0BB697343FF7FE465DC990433F92A6E9" FromRole="FromRole_assoc_0BB697343FF7FE465DC990433F92A6E9" ToRole="ToRole_assoc_0BB697343FF7FE465DC990433F92A6E9"/>
+                <NavigationProperty Name="to_Z_I_pm_196h_eqkt" Relationship="cds_z_pm_196h_sd.assoc_130EE6A5D5B48FA91D9E02594DF660A7" FromRole="FromRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7" ToRole="ToRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_system_statusType" sap:label="System status of maintenance order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Статус" sap:quickinfo="Статус об'єкта"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Статус" sap:quickinfo="Індивідуальний статус об'єкта (коротка форма)"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Статус" sap:quickinfo="Статус об'єкта"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_system_status_shType" sap:label="Search help for system status" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="istat"/>
+                    <PropertyRef Name="spras"/>
+                </Key>
+                <Property Name="istat" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Статус системи"/>
+                <Property Name="spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Код мови"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Статус" sap:quickinfo="Індивідуальний статус об'єкта (коротка форма)"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_user_statusType" sap:label="User status for maintenace order" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="aufnr"/>
+                </Key>
+                <Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Замовлення" sap:quickinfo="Номер замовлення"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Статус" sap:quickinfo="Статус об'єкта"/>
+                <Property Name="stsma" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Схема статусу"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Статус" sap:quickinfo="Індивідуальний статус об'єкта (коротка форма)"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Статус" sap:quickinfo="Статус об'єкта"/>
+            </EntityType>
+            <EntityType Name="Z_I_pm_196h_user_status_shType" sap:label="Search help for user status" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="stsma"/>
+                    <PropertyRef Name="estat"/>
+                    <PropertyRef Name="spras"/>
+                </Key>
+                <Property Name="stsma" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="Схема статусу"/>
+                <Property Name="estat" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="Статус користувача"/>
+                <Property Name="spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Код мови"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Статус" sap:quickinfo="Індивідуальний статус об'єкта (коротка форма)"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Статус" sap:quickinfo="Статус об'єкта"/>
+            </EntityType>
+            <Association Name="assoc_17B27CBE1889B13836543A71C6A15D7B" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" Multiplicity="1" Role="FromRole_assoc_17B27CBE1889B13836543A71C6A15D7B"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_system_statusType" Multiplicity="*" Role="ToRole_assoc_17B27CBE1889B13836543A71C6A15D7B"/>
+            </Association>
+            <Association Name="assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" Multiplicity="1" Role="FromRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_user_statusType" Multiplicity="*" Role="ToRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7"/>
+            </Association>
+            <Association Name="assoc_0BB697343FF7FE465DC990433F92A6E9" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" Multiplicity="1" Role="FromRole_assoc_0BB697343FF7FE465DC990433F92A6E9"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_afih_related_dataType" Multiplicity="0..1" Role="ToRole_assoc_0BB697343FF7FE465DC990433F92A6E9"/>
+            </Association>
+            <Association Name="assoc_130EE6A5D5B48FA91D9E02594DF660A7" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" Multiplicity="1" Role="FromRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_eqktType" Multiplicity="0..1" Role="ToRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7"/>
+            </Association>
+            <Association Name="assoc_AFD8E184E1BDF487EBDF9D8113734B1B" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" Multiplicity="1" Role="FromRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_user_statusType" Multiplicity="*" Role="ToRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B"/>
+            </Association>
+            <Association Name="assoc_77E6888121B7523C112AB8EA8CD268DF" sap:content-version="1">
+                <End Type="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" Multiplicity="1" Role="FromRole_assoc_77E6888121B7523C112AB8EA8CD268DF"/>
+                <End Type="cds_z_pm_196h_sd.Z_I_pm_196h_system_statusType" Multiplicity="*" Role="ToRole_assoc_77E6888121B7523C112AB8EA8CD268DF"/>
+            </Association>
+            <EntityContainer Name="cds_z_pm_196h_sd_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Z_C_pm_196h_orders_data" EntityType="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_afih" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_afihType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_afih_related_data" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_afih_related_dataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_aufk" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_aufkType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_eqkt" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_eqktType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_orders_data_u" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_system_status" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_system_statusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_system_status_sh" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_system_status_shType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_user_status" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_user_statusType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_I_pm_196h_user_status_sh" EntityType="cds_z_pm_196h_sd.Z_I_pm_196h_user_status_shType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_77E6888121B7523C112AB8EA8CD268DF" Association="cds_z_pm_196h_sd.assoc_77E6888121B7523C112AB8EA8CD268DF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_pm_196h_orders_data" Role="FromRole_assoc_77E6888121B7523C112AB8EA8CD268DF"/>
+                    <End EntitySet="Z_I_pm_196h_system_status" Role="ToRole_assoc_77E6888121B7523C112AB8EA8CD268DF"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_130EE6A5D5B48FA91D9E02594DF660A7" Association="cds_z_pm_196h_sd.assoc_130EE6A5D5B48FA91D9E02594DF660A7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_I_pm_196h_orders_data_u" Role="FromRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7"/>
+                    <End EntitySet="Z_I_pm_196h_eqkt" Role="ToRole_assoc_130EE6A5D5B48FA91D9E02594DF660A7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7" Association="cds_z_pm_196h_sd.assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_I_pm_196h_orders_data_u" Role="FromRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7"/>
+                    <End EntitySet="Z_I_pm_196h_user_status" Role="ToRole_assoc_BA4A0FF4B60DFC06C534E1E82BFFD9F7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0BB697343FF7FE465DC990433F92A6E9" Association="cds_z_pm_196h_sd.assoc_0BB697343FF7FE465DC990433F92A6E9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_I_pm_196h_orders_data_u" Role="FromRole_assoc_0BB697343FF7FE465DC990433F92A6E9"/>
+                    <End EntitySet="Z_I_pm_196h_afih_related_data" Role="ToRole_assoc_0BB697343FF7FE465DC990433F92A6E9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_AFD8E184E1BDF487EBDF9D8113734B1B" Association="cds_z_pm_196h_sd.assoc_AFD8E184E1BDF487EBDF9D8113734B1B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_pm_196h_orders_data" Role="FromRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B"/>
+                    <End EntitySet="Z_I_pm_196h_user_status" Role="ToRole_assoc_AFD8E184E1BDF487EBDF9D8113734B1B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_17B27CBE1889B13836543A71C6A15D7B" Association="cds_z_pm_196h_sd.assoc_17B27CBE1889B13836543A71C6A15D7B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_I_pm_196h_orders_data_u" Role="FromRole_assoc_17B27CBE1889B13836543A71C6A15D7B"/>
+                    <End EntitySet="Z_I_pm_196h_system_status" Role="ToRole_assoc_17B27CBE1889B13836543A71C6A15D7B"/>
+                </AssociationSet>
+                <FunctionImport Name="SetAH" ReturnType="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" EntitySet="Z_C_pm_196h_orders_data" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" sap:applicable-path="SetAH_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SetNA" ReturnType="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" EntitySet="Z_C_pm_196h_orders_data" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" sap:applicable-path="SetNA_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SetUN" ReturnType="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" EntitySet="Z_C_pm_196h_orders_data" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType" sap:applicable-path="SetUN_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SetStatusAH" ReturnType="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" EntitySet="Z_I_pm_196h_orders_data_u" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" sap:applicable-path="SetStatusAH_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SetStatusNA" ReturnType="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" EntitySet="Z_I_pm_196h_orders_data_u" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" sap:applicable-path="SetStatusNA_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+                <FunctionImport Name="SetStatusUN" ReturnType="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" EntitySet="Z_I_pm_196h_orders_data_u" m:HttpMethod="POST" sap:action-for="cds_z_pm_196h_sd.Z_I_pm_196h_orders_data_uType" sap:applicable-path="SetStatusUN_ac">
+                    <Parameter Name="aufnr" Type="Edm.String" Mode="In" MaxLength="12"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType/StatSys">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Search help for system status"/>
+                        <PropertyValue Property="CollectionPath" String="Z_I_pm_196h_system_status_sh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="StatSys"/>
+                                    <PropertyValue Property="ValueListProperty" String="txt04"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="istat"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="spras"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_z_pm_196h_sd.Z_C_pm_196h_orders_dataType/StatUsr">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Search help for user status"/>
+                        <PropertyValue Property="CollectionPath" String="Z_I_pm_196h_user_status_sh"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="StatUsr"/>
+                                    <PropertyValue Property="ValueListProperty" String="txt04"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="stsma"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="estat"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="spras"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="txt30"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_z_pm_196h_sd.cds_z_pm_196h_sd_Entities">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_z_pm_196h_sd.cds_z_pm_196h_sd_Entities/Z_C_pm_196h_orders_data">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>SetAH_ac</PropertyPath>
+                                <PropertyPath>SetNA_ac</PropertyPath>
+                                <PropertyPath>SetUN_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SetAH_ac</PropertyPath>
+                                <PropertyPath>SetNA_ac</PropertyPath>
+                                <PropertyPath>SetUN_ac</PropertyPath>
+                                <PropertyPath>StatSys</PropertyPath>
+                                <PropertyPath>StatUsr</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_z_pm_196h_sd.cds_z_pm_196h_sd_Entities/Z_I_pm_196h_orders_data_u">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>SetStatusAH_ac</PropertyPath>
+                                <PropertyPath>SetStatusNA_ac</PropertyPath>
+                                <PropertyPath>SetStatusUN_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>SetStatusAH_ac</PropertyPath>
+                                <PropertyPath>SetStatusNA_ac</PropertyPath>
+                                <PropertyPath>SetStatusUN_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/Z_UI_PM_196H_SB_V2/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/Z_UI_PM_196H_SB_V2/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
